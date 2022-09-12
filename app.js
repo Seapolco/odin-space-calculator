@@ -27,7 +27,13 @@ let buttons = document.querySelectorAll('button');
 let operators = document.querySelectorAll('.operator');
 let numbers = document.querySelectorAll('.number');
 
+let power = document.querySelector('.hey');
 
+power.addEventListener('click', () => {
+    powerOn = true;
+    console.log(powerOn)
+    display.innerText = 'Hello, world!';
+})
 
 
 let currentOp = '';
@@ -40,6 +46,8 @@ let total = 0;
 
 let calculated = false;
 let newOperators = [];
+
+let powerOn = false;
 
 const add = function(a,b) {
 	return a + b;
@@ -85,26 +93,29 @@ let tNumArr = [];
 numbers.forEach((e) => {
     e.addEventListener('click', (e) => {
             console.log('numberFunc', newOperators)
-            if(newOperators.length <  1) {
-                fNumArr.push(e.target.innerText)
-                firstNumber = parseInt(fNumArr.join(''));
-                console.log('first',firstNumber);
-                display.textContent = firstNumber;
-            } else if( newOperators.length ===  1) {
-                
-                sNumArr.push(e.target.innerText);
-                secondNumber = parseInt(sNumArr.join(''));
-                console.log('second',secondNumber);
-                display.textContent = secondNumber;
-                
-            } else if(newOperators.length > 1) {
-
-            tNumArr.push(e.target.innerText);
-            thirdNumber = parseInt(tNumArr.join(''));
-            console.log('third',thirdNumber);
-            display.textContent = thirdNumber;
-
-        }  
+            if(powerOn) {
+                if(newOperators.length <  1) {
+                    fNumArr.push(e.target.innerText)
+                    firstNumber = parseInt(fNumArr.join(''));
+                    console.log('first',firstNumber);
+                    display.textContent = firstNumber;
+                } else if( newOperators.length ===  1) {
+                    
+                    sNumArr.push(e.target.innerText);
+                    secondNumber = parseInt(sNumArr.join(''));
+                    console.log('second',secondNumber);
+                    display.textContent = secondNumber;
+                    
+                } else if(newOperators.length > 1) {
+    
+                tNumArr.push(e.target.innerText);
+                thirdNumber = parseInt(tNumArr.join(''));
+                console.log('third',thirdNumber);
+                display.textContent = thirdNumber;
+    
+            }  
+        }
+           
     })
 })
 
@@ -112,47 +123,51 @@ let lastOp = '';
 
 operators.forEach((e) => {
     e.addEventListener('click', (e) => {
-        if(currentOp !== '') {
-            lastOp = currentOp;
-            
-        }
-        if(currentOp === '') {
-            currentOp = e.target.innerText;
-        }
-       
-        currentOp = e.target.innerText;
-        newOperators.push(currentOp);
-        console.log('topOfOp',newOperators)
-        display.innerText = '';
-        console.log('last',lastOp,'current',currentOp)
-        if(newOperators.length === 2) {
-                console.log(operate(firstNumber,secondNumber,lastOp));
-                total = operate(firstNumber,secondNumber,lastOp);
-    
-                display.innerText = total;
-                firstNumber = total;
-                secondNumber = 0;
-                fNumArr = [];
-                fNumArr.push(total)
-                sNumArr = [];
-             
+        if(powerOn) {
+            if(currentOp !== '') {
+                lastOp = currentOp;
+                
             }
-        if(newOperators.length > 2) {
-            console.log('opGreaterThan2',newOperators, lastOp);
-            console.log(operate(firstNumber,thirdNumber,lastOp));
-            total = operate(firstNumber, thirdNumber, lastOp);
-            display.innerText = total
-            firstNumber = total;
-            tNumArr = [];
-            thirdNumber = 0;
-            
+            if(currentOp === '') {
+                currentOp = e.target.innerText;
+            }
+           
+            currentOp = e.target.innerText;
+            newOperators.push(currentOp);
+            console.log('topOfOp',newOperators)
+            display.innerText = '';
+            console.log('last',lastOp,'current',currentOp)
+            if(newOperators.length === 2) {
+                    console.log(operate(firstNumber,secondNumber,lastOp));
+                    total = operate(firstNumber,secondNumber,lastOp);
+        
+                    display.innerText = total;
+                    firstNumber = total;
+                    secondNumber = 0;
+                    fNumArr = [];
+                    fNumArr.push(total)
+                    sNumArr = [];
+                 
+                }
+            if(newOperators.length > 2) {
+                console.log('opGreaterThan2',newOperators, lastOp);
+                console.log(operate(firstNumber,thirdNumber,lastOp));
+                total = operate(firstNumber, thirdNumber, lastOp);
+                display.innerText = total
+                firstNumber = total;
+                tNumArr = [];
+                thirdNumber = 0;
+                
+            }
+                
         }
-            
+        
     })
 })
 
 clear.addEventListener('click', () => {
 
+    if(powerOn) {
     display.innerText ='';
     firstNumber = 0;
     secondNumber = 0;
@@ -162,16 +177,22 @@ clear.addEventListener('click', () => {
     tNumArr = [];
     total = 0;
     newOperators = [];
+    }
+
+    
 })
 
 equal.addEventListener('click', () => {
-    if(thirdNumber === 0) {
-        console.log('equal t=0')
-        let sum = operate(firstNumber, secondNumber, currentOp)
-        display.innerText = sum;
-    } else if(thirdNumber !== 0) {
-        console.log('equal s=0')
-        let sum = operate(firstNumber, thirdNumber, currentOp)
-        display.innerText = sum;
+    if(powerOn) {
+        if(thirdNumber === 0) {
+            console.log('equal t=0')
+            let sum = operate(firstNumber, secondNumber, currentOp)
+            display.innerText = sum;
+        } else if(thirdNumber !== 0) {
+            console.log('equal s=0')
+            let sum = operate(firstNumber, thirdNumber, currentOp)
+            display.innerText = sum;
+        }
     }
+    
 }) 
