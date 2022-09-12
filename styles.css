@@ -1,0 +1,191 @@
+
+.one {
+    grid-area: one;
+    box-shadow: 2px 0px 1px 3px black;
+   
+}
+.two {
+    grid-area: two;
+    box-shadow: 2px 0px 1px 3px black;
+}
+ .three {
+    grid-area: three;
+    box-shadow: -1px 0px -1px 3px black;
+}
+.four {
+    grid-area: four;
+    box-shadow: 2px 0px 1px 3px black;
+}
+.five {
+    grid-area: five;
+    box-shadow: 2px 0px 1px 3px black;
+}
+.six {
+    grid-area: six;
+    box-shadow: -1px 0px -1px 3px black; 
+}
+.seven {
+    grid-area: seven;
+    box-shadow: 2px 0px 1px 3px black;
+}
+.eight {
+    grid-area: eight;
+    box-shadow: 2px 0px 1px 3px black;
+}
+.nine {
+    grid-area: nine;
+    box-shadow: -1px 0px 1px 3px black;
+}
+.nought {
+    grid-area: nought;
+    box-shadow: 2px 0px 1px 1px black;
+}
+
+.clear {
+    grid-area: clear;
+    background-color: rgb(186, 54, 56,0.686);
+}
+.plus {
+    grid-area: plus
+}
+.minus {
+    grid-area: minus;
+}
+.mulitply {
+    grid-area: mulitply;
+}
+.divide {
+    grid-area: divide ;
+}
+.equal {
+    grid-area: equal;
+    background-color: rgb(186, 54, 56,0.686);
+    box-shadow: -2px 0px 2px 3px black;
+}
+.period {
+    grid-area: peroid;
+}
+
+.title {
+    /* position: relative; */
+    font-family: "Amatic SC";
+    font-size: 7rem;
+    font-weight: bold;
+    text-align: center;
+    color: orange;
+    text-shadow: 4px 2px 4px rgb(233, 225, 227);
+    margin: 0;
+    letter-spacing: 1rem;
+
+}
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* #myVideo {
+    position: relative;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  } */
+
+
+body {
+    overflow: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./images/tengyart-PmnCG7_2Sc4-unsplash.jpeg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+}
+
+.inner-container {
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    border: solid orange 3px;
+    width: 26rem;
+    height: 28rem;
+    border-radius: 10px;
+    background-color: rgba(51, 170, 162, 0.307);
+    margin: 2rem;
+}
+
+/* .outer-container {
+    display: flex;
+    justify-content: center;
+    border: solid orange 3px;
+    background-color: rgba(162, 170, 51, 0.32);
+} */
+
+.calculator {
+    /* position:relative; */
+    display:grid;
+    min-width: 24rem;
+    max-width: 24rem;
+    max-height: 24rem;
+    min-height: 24rem;
+    margin: 2rem;
+    border: solid black 3px;
+    border-radius: 10px;
+    grid-template-columns: repeat(4, minmax(3rem,1fr)); 
+    /* grid-template-rows: repeat(5, 1fr);  */
+    grid-template-areas:
+    "display display display clear"
+    "one two three multiply"
+    "four five six minus"
+    "seven eight nine plus"
+    "nought peroid equal divide"
+
+    
+}
+
+.display {
+    font-family: 'Orbitron';
+    display:flex;
+    flex-grow: 0;
+    flex-shrink: 1;
+    grid-area: display;
+    border: solid black 3px;
+    background-color: white;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+}
+
+
+button {
+    text-decoration: none;
+    font-family: 'Gloria Hallelujah';
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid black 3px;
+    background-color: rgba(186, 140, 54, 0.686);
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: rgba(237, 171, 47, 0.897);
+}
+
+.operator {
+    background-color: rgba(54, 186, 184, 0.686);
+}
+
+.operator:hover {
+    background-color: rgb(54, 186, 184);
+}
+
+.clear:hover, .equal:hover {
+    background-color: rgba(186, 54, 56, 0.961);
+}
