@@ -191,6 +191,12 @@ body {
 }
 
 
+@keyframes fadeIn {
+    0% { color: rgba(0, 0, 0, 0.05);; }
+    100% { color: black; }
+  }
+
+
 button {
     text-decoration: none;
     font-family: 'Combo';

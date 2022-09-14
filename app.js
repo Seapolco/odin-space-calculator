@@ -45,7 +45,8 @@ let power = document.querySelector('.hey');
 
 power.addEventListener('click', () => {
     powerOn = true;
-    console.log(powerOn)
+    console.log(powerOn);
+    display.style= 'animation: fadeIn 3s'
     display.innerText = 'Hello, world!';
 })
 
