@@ -1,10 +1,11 @@
 // TO - DO
 
-// Add modulus
 // Add backspace
+// Add modulus
 // Show previous / current calculation on the screen
 // Rick roll if they try to divide by zero.
 // CLEAN UP CODE/ refactor/ DRY
+// Add keyboard support!
 
 
 

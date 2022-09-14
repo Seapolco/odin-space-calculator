@@ -3,7 +3,7 @@
     'FILL' 0,
     'wght' 700,
     'GRAD' 0,
-    'opsz' 48
+    'opsz' 48,
   }
 
 
@@ -55,7 +55,7 @@
     background-color: rgb(186, 54, 56,0.686);
 }
 .plus {
-    grid-area: plus
+    grid-area: plus;
 }
 .minus {
     grid-area: minus;
@@ -125,7 +125,7 @@ body {
     justify-content: center;
     border: solid orange 3px;
     width: 26rem;
-    height: 28rem;
+    height: 30rem;
     border-radius: 10px;
     background-color: rgba(51, 170, 162, 0.307);
     margin: 2rem;
@@ -141,27 +141,34 @@ body {
    cursor: pointer; 
 }
 
-/* .outer-container {
-    display: flex;
-    justify-content: center;
-    border: solid orange 3px;
-    background-color: rgba(162, 170, 51, 0.32);
-} */
+.plusOrMinus {
+    grid-area: plusOrMinus;
+}
+
+.modulus {
+    grid-area: modulus;
+}
+
+.backspace {
+    grid-area: backspace;
+}
 
 .calculator {
     /* position:relative; */
     display:grid;
     min-width: 24rem;
-    max-width: 24rem;
-    max-height: 24rem;
-    min-height: 24rem;
+    max-width: 24rem; 
+    max-height: 26rem; 
+    min-height: 26rem;
     margin: 2rem;
     border: solid black 3px;
     border-radius: 10px;
     grid-template-columns: repeat(4, minmax(3rem,1fr)); 
-    /* grid-template-rows: repeat(5, 1fr);  */
+    grid-template-rows: repeat(6, minmax(3rem,1fr)); 
     grid-template-areas:
-    "display display display clear"
+    /* "mini mini mini mini" */
+    "display display display display"
+    "plusOrMinus modulus backspace clear"
     "one two three multiply"
     "four five six minus"
     "seven eight nine plus"
@@ -170,26 +177,25 @@ body {
     
 }
 
+
 .display {
     font-family: 'Orbitron';
     display:flex;
-    flex-grow: 0;
-    flex-shrink: 1;
     grid-area: display;
     border: solid black 3px;
     background-color: white;
-    display:flex;
-    justify-content: center;
+    justify-content:center;
     align-items:center;
+    resize: none;
 
 }
 
 
 button {
     text-decoration: none;
-    font-family: 'Gloria Hallelujah';
+    font-family: 'Combo';
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.25rem;
     border: solid black 3px;
     background-color: rgba(186, 140, 54, 0.686);
     font-weight: bold;
