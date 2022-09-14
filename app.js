@@ -95,29 +95,75 @@ numbers.forEach((e) => {
             console.log('numberFunc', newOperators)
             if(powerOn) {
                 if(newOperators.length <  1) {
-                    fNumArr.push(e.target.innerText)
-                    firstNumber = parseInt(fNumArr.join(''));
-                    console.log('first',firstNumber);
-                    display.textContent = firstNumber;
+                    if(e.target.innerText === '.') {
+                        fNumArr.push(e.target.innerText);
+                        console.log(fNumArr);
+                    } else {
+                        if(fNumArr.includes('.')) {
+                            console.log('THERES!!!!!')
+                            fNumArr.push(e.target.innerText)
+                            firstNumber = parseFloat(fNumArr.join(''));
+                            console.log('firstFloat',firstNumber);
+                            display.textContent = firstNumber;
+                        } else {
+                            fNumArr.push(e.target.innerText)
+                            firstNumber = parseInt(fNumArr.join(''));
+                            console.log('first',firstNumber);
+                            display.textContent = firstNumber;
+                        }
+                        
+                    }
                 } else if( newOperators.length ===  1) {
+                    if(e.target.innerText === '.') {
+                        sNumArr.push(e.target.innerText);
+                        console.log(sNumArr);
+                    } 
+                    else {
+                        if(sNumArr.includes('.')) {
+                            console.log('THERES!!!!!')
+                            sNumArr.push(e.target.innerText)
+                            secondNumber = parseFloat(sNumArr.join(''));
+                            console.log('secondFloat',secondNumber);
+                            display.textContent = secondNumber;
+                        } else {
+                            sNumArr.push(e.target.innerText);
+                            secondNumber = parseInt(sNumArr.join(''));
+                            console.log('second',secondNumber);
+                            display.textContent = secondNumber;
+                        }
+                    }
                     
-                    sNumArr.push(e.target.innerText);
-                    secondNumber = parseInt(sNumArr.join(''));
-                    console.log('second',secondNumber);
-                    display.textContent = secondNumber;
                     
                 } else if(newOperators.length > 1) {
+                    if(e.target.innerText === '.') {
+                        tNumArr.push(e.target.innerText);
+                        console.log(tNumArr);
+                    } else {
+                        if(tNumArr.includes('.')) {
+                            console.log('THERES!!!!!')
+                            tNumArr.push(e.target.innerText)
+                            thirdNumber = parseFloat(tNumArr.join(''));
+                            console.log('thirdFloat',thirdNumber);
+                            display.textContent = thirdNumber;
+                        } else {
+                            tNumArr.push(e.target.innerText);
+                            thirdNumber = parseInt(tNumArr.join(''));
+                            console.log('third',thirdNumber);
+                            display.textContent = thirdNumber;
+                        }
+                    }
     
-                tNumArr.push(e.target.innerText);
-                thirdNumber = parseInt(tNumArr.join(''));
-                console.log('third',thirdNumber);
-                display.textContent = thirdNumber;
+                       
     
             }  
         }
            
     })
 })
+
+// period.addEventListener('click', () => {
+//     console.log(typeof (period.innerText))
+// })
 
 let lastOp = '';
 
