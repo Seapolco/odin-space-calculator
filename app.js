@@ -1,3 +1,15 @@
+// TO - DO
+
+// Add modulus
+// Add backspace
+// Show previous / current calculation on the screen
+// Rick roll if they try to divide by zero.
+
+
+
+
+
+
 
 let display = document.querySelector('.display');
 let title = document.querySelector('.title');
@@ -87,8 +99,6 @@ function operate(fnum,snum, op) {
 let fNumArr = [];
 let sNumArr = [];
 let tNumArr = [];   
-
-//let fcalc = true;
 
 numbers.forEach((e) => {
     e.addEventListener('click', (e) => {
