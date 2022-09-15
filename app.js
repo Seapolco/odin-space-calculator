@@ -1,11 +1,18 @@
 // TO - DO
 
-// Add backspace
+// Add backspace <===== DONE ********
 // Add modulus
 // Show previous / current calculation on the screen
 // Rick roll if they try to divide by zero.
 // CLEAN UP CODE/ refactor/ DRY
-// Add keyboard support!
+// Add keyboard support
+
+// BUGS
+
+// after an operation, if you press a number before an operator
+// it will add that number to the previous nArr and display on-screen
+
+
 
 
 
@@ -42,6 +49,7 @@ let operators = document.querySelectorAll('.operator');
 let numbers = document.querySelectorAll('.number');
 
 let power = document.querySelector('.hey');
+let backspace = document.querySelector('.backspace');
 
 power.addEventListener('click', () => {
     powerOn = true;
@@ -101,7 +109,43 @@ function operate(fnum,snum, op) {
 
 let fNumArr = [];
 let sNumArr = [];
-let tNumArr = [];   
+let tNumArr = [];  
+
+backspace.addEventListener('click', () => {
+    console.log(backspace.innerText)
+    if(newOperators.length < 1) {
+        fNumArr.pop()
+        if(!fNumArr.includes('.')) {
+            firstNumber = parseInt(fNumArr.join(''));
+            display.innerText = firstNumber;   
+        } else {
+            firstNumber = parseFloat(fNumArr.join(''));
+            display.innerText = firstNumber;
+        }
+
+    } else if(newOperators.length === 1) {
+        sNumArr.pop()
+        if(!sNumArr.includes('.')) {
+            secondNumber = parseInt(sNumArr.join(''));
+            display.innerText = secondNumber;
+           
+        } else {
+            secondNumber = parseFloat(sNumArr.join(''));
+            display.innerText = secondNumber; 
+        }
+    } else {
+        tNumArr.pop()
+        if(!tNumArr.includes('.')) {
+            thirdNumber = parseInt(tNumArr.join(''));
+            display.innerText = thirdNumber;
+           
+        } else {
+            thirdNumber = parseFloat(tNumArr.join(''));
+            display.innerText = thirdNumber;
+           
+        }
+    }
+})
 
 numbers.forEach((e) => {
     e.addEventListener('click', (e) => {
