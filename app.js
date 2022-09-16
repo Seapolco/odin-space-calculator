@@ -69,10 +69,12 @@ let thirdNumber = 0;
 
 let total = 0;
 
-let calculated = false;
+// let calculated = false;
 let newOperators = [];
 
 let powerOn = false;
+
+let calculation = [];
 
 const add = function(a,b) {
 	return a + b;
@@ -241,7 +243,17 @@ operators.forEach((e) => {
             newOperators.push(currentOp);
             console.log('topOfOp',newOperators)
             display.innerText = '';
-            console.log('last',lastOp,'current',currentOp)
+            console.log('last',lastOp,'current',currentOp);
+            if(newOperators.length <= 1) {
+                calculation.push(firstNumber, currentOp);
+                console.log('CALCULATION',calculation)
+                calculationDisplay.innerText = calculation.join('')
+            }
+            if(newOperators.length > 1 && newOperators.length <= 2) {
+                calculation.push(secondNumber, currentOp);
+                console.log('CALCULATION-TWO',calculation)
+                calculationDisplay.innerText = calculation.join('')
+            }
             if(newOperators.length === 2) {
                     console.log(operate(firstNumber,secondNumber,lastOp));
                     total = operate(firstNumber,secondNumber,lastOp);
@@ -255,6 +267,9 @@ operators.forEach((e) => {
                  
                 }
             if(newOperators.length > 2) {
+                calculation.push(thirdNumber, currentOp);
+                console.log('CALCULATION-THREE',calculation)
+                calculationDisplay.innerText = calculation.join('')
                 console.log('opGreaterThan2',newOperators, lastOp);
                 console.log(operate(firstNumber,thirdNumber,lastOp));
                 total = operate(firstNumber, thirdNumber, lastOp);
@@ -282,6 +297,8 @@ clear.addEventListener('click', () => {
     tNumArr = [];
     total = 0;
     newOperators = [];
+    calculation = [];
+    calculationDisplay.innerText = '';
     }
 
     
