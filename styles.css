@@ -118,7 +118,7 @@ body {
 }
 
 .inner-container {
-    /* position: relative; */
+    position: relative;
     display: flex;
     flex-direction: row;
     position:relative;
@@ -175,6 +175,12 @@ body {
     "nought peroid equal divide"
 
     
+}
+
+.calculation {
+    position: absolute;
+    top: 40px;
+    right: 30px;
 }
 
 

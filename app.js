@@ -51,6 +51,8 @@ let numbers = document.querySelectorAll('.number');
 let power = document.querySelector('.hey');
 let backspace = document.querySelector('.backspace');
 
+let calculationDisplay = document.querySelector('.calculation')
+
 power.addEventListener('click', () => {
     powerOn = true;
     console.log(powerOn);
