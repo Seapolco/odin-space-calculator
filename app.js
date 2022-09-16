@@ -250,9 +250,19 @@ operators.forEach((e) => {
                 calculationDisplay.innerText = calculation.join('')
             }
             if(newOperators.length > 1 && newOperators.length <= 2) {
-                calculation.push(secondNumber, currentOp);
-                console.log('CALCULATION-TWO',calculation)
-                calculationDisplay.innerText = calculation.join('')
+                console.log('POOOOOO', display.innerText);
+                    if(typeof calculation[calculation.length -1] !== 'number') {
+                        console.log('DISPLAY CALCULATION', display.innerText)   
+                        calculation.push(secondNumber, currentOp);
+                        console.log('CALCULATION-TWO',calculation)
+                        calculationDisplay.innerText = calculation.join('')
+                    } else {
+                        calculation.push(currentOp);
+                        calculationDisplay.innerText = calculation.join('')
+                    }
+
+                
+
             }
             if(newOperators.length === 2) {
                     console.log(operate(firstNumber,secondNumber,lastOp));
@@ -306,13 +316,32 @@ clear.addEventListener('click', () => {
 
 equal.addEventListener('click', () => {
     if(powerOn) {
+        if(newOperators.length >= 1 ) {
+            calculation.push(secondNumber);
+            console.log('EQUAL CALCULATION  ',calculation)
+            calculationDisplay.innerText = calculation.join('')
+            console.log('equaldisplay',display.innerText)
+        }
+        if(newOperators > 2) {
+            calculation.push(thirdNumber, currentOp);
+            console.log('CALCULATION-THREE',calculation)
+            calculationDisplay.innerText = calculation.join('')
+        }
+        //// NEED TO ADD ANOTHER IF statement so the zero
+        //which is probably the second number which has been reset above
+        // is getting pushed onto the array.
+
+
+        // DOESNT WORK FOR THIRD CALCULATION!!!!
         if(thirdNumber === 0) {
             console.log('equal t=0')
             let sum = operate(firstNumber, secondNumber, currentOp)
+            total = sum;
             display.innerText = sum;
         } else if(thirdNumber !== 0) {
             console.log('equal s=0')
             let sum = operate(firstNumber, thirdNumber, currentOp)
+            total= sum;
             display.innerText = sum;
         }
     }
