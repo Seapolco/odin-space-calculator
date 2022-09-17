@@ -315,35 +315,43 @@ clear.addEventListener('click', () => {
 })
 
 equal.addEventListener('click', () => {
-    if(powerOn) {
-        if(newOperators.length >= 1 ) {
-            calculation.push(secondNumber);
-            console.log('EQUAL CALCULATION  ',calculation)
-            calculationDisplay.innerText = calculation.join('')
-            console.log('equaldisplay',display.innerText)
-        }
-        if(newOperators > 2) {
-            calculation.push(thirdNumber, currentOp);
-            console.log('CALCULATION-THREE',calculation)
-            calculationDisplay.innerText = calculation.join('')
-        }
-        //// NEED TO ADD ANOTHER IF statement so the zero
-        //which is probably the second number which has been reset above
-        // is getting pushed onto the array.
+    // if(powerOn) {
+    //     if(newOperators.length >= 1 ) {
+    //         if(thirdNumber===0) {
+    //         calculation.push(secondNumber);
+    //         console.log('EQUAL CALCULATION  ',calculation)
+    //         calculationDisplay.innerText = calculation.join('')
+    //         console.log('equaldisplay',display.innerText)
+    //         } else {
+    //         calculation.push(firstNumber);
+    //         console.log('EQUAL THIRD CALCULATION  ',calculation)
+    //         calculationDisplay.innerText = calculation.join('')
+    //         console.log('equaldisplayTHIRD',display.innerText)
+    //         }
+            
+    //     }
+    //     if(newOperators > 2) {
+    //         calculation.push(currentOp, thirdNumber);
+    //         console.log('CALCULATION-THREE',calculation)
+    //         calculationDisplay.innerText = calculation.join('')
+    //     }
+    //     //// NEED TO ADD ANOTHER IF statement so the zero
+    //     //which is probably the second number which has been reset above
+    //     // is getting pushed onto the array.
 
 
-        // DOESNT WORK FOR THIRD CALCULATION!!!!
-        if(thirdNumber === 0) {
-            console.log('equal t=0')
-            let sum = operate(firstNumber, secondNumber, currentOp)
-            total = sum;
-            display.innerText = sum;
-        } else if(thirdNumber !== 0) {
-            console.log('equal s=0')
-            let sum = operate(firstNumber, thirdNumber, currentOp)
-            total= sum;
-            display.innerText = sum;
-        }
-    }
+    //     // DOESNT WORK FOR THIRD CALCULATION!!!!
+    //     if(thirdNumber === 0) {
+    //         console.log('equal t=0')
+    //         let sum = operate(firstNumber, secondNumber, currentOp)
+    //         total = sum;
+    //         display.innerText = sum;
+    //     } else if(thirdNumber !== 0) {
+    //         console.log('equal s=0')
+    //         let sum = operate(firstNumber, thirdNumber, currentOp)
+    //         total= sum;
+    //         display.innerText = sum;
+    //     }
+    // }
     
 }) 
