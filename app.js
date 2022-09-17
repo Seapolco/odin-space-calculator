@@ -28,7 +28,6 @@ let calculationDisplay = document.querySelector('.calculation')
 
 power.addEventListener('click', () => {
     powerOn = true;
-    console.log(powerOn);
     display.style= 'animation: fadeIn 3s'
     display.innerText = 'Hello, world!';
 })
@@ -42,8 +41,8 @@ let thirdNumber = 0;
 
 let total = 0;
 
-// let calculated = false;
 let newOperators = [];
+let lastOp = '';
 
 let powerOn = false;
 
@@ -98,7 +97,6 @@ function deleteLastCharacter(array,number) {
 }
 
 backspace.addEventListener('click', () => {
-    console.log(backspace.innerText)
     if(newOperators.length < 1) {
         deleteLastCharacter(fNumArr, firstNumber);
     } else if(newOperators.length === 1) {
@@ -110,23 +108,18 @@ backspace.addEventListener('click', () => {
 
 numbers.forEach((e) => {
     e.addEventListener('click', (e) => {
-            console.log('numberFunc', newOperators)
             if(powerOn) {
                 if(newOperators.length <  1) {
                     if(e.target.innerText === '.') {
                         fNumArr.push(e.target.innerText);
-                        console.log(fNumArr);
                     } else {
                         if(fNumArr.includes('.')) {
-                            console.log('THERES!!!!!')
                             fNumArr.push(e.target.innerText)
                             firstNumber = parseFloat(fNumArr.join(''));
-                            console.log('firstFloat',firstNumber);
                             display.textContent = firstNumber;
                         } else {
                             fNumArr.push(e.target.innerText)
                             firstNumber = parseInt(fNumArr.join(''));
-                            console.log('first',firstNumber);
                             display.textContent = firstNumber;
                         }
                         
@@ -134,19 +127,15 @@ numbers.forEach((e) => {
                 } else if( newOperators.length ===  1) {
                     if(e.target.innerText === '.') {
                         sNumArr.push(e.target.innerText);
-                        console.log(sNumArr);
                     } 
                     else {
                         if(sNumArr.includes('.')) {
-                            console.log('THERES!!!!!')
                             sNumArr.push(e.target.innerText)
                             secondNumber = parseFloat(sNumArr.join(''));
-                            console.log('secondFloat',secondNumber);
                             display.textContent = secondNumber;
                         } else {
                             sNumArr.push(e.target.innerText);
                             secondNumber = parseInt(sNumArr.join(''));
-                            console.log('second',secondNumber);
                             display.textContent = secondNumber;
                         }
                     }
@@ -155,18 +144,14 @@ numbers.forEach((e) => {
                 } else if(newOperators.length > 1) {
                     if(e.target.innerText === '.') {
                         tNumArr.push(e.target.innerText);
-                        console.log(tNumArr);
                     } else {
                         if(tNumArr.includes('.')) {
-                            console.log('THERES!!!!!')
                             tNumArr.push(e.target.innerText)
                             thirdNumber = parseFloat(tNumArr.join(''));
-                            console.log('thirdFloat',thirdNumber);
                             display.textContent = thirdNumber;
                         } else {
                             tNumArr.push(e.target.innerText);
                             thirdNumber = parseInt(tNumArr.join(''));
-                            console.log('third',thirdNumber);
                             display.textContent = thirdNumber;
                         }
                     }
@@ -179,11 +164,11 @@ numbers.forEach((e) => {
     })
 })
 
-// period.addEventListener('click', () => {
-//     console.log(typeof (period.innerText))
-// })
 
-let lastOp = '';
+function updateCalculation(number, operator) {
+    calculation.push(number, operator);
+    calculationDisplay.innerText = calculation.join('');
+}
 
 operators.forEach((e) => {
     e.addEventListener('click', (e) => {
@@ -198,18 +183,12 @@ operators.forEach((e) => {
            
             currentOp = e.target.innerText;
             newOperators.push(currentOp);
-            console.log('topOfOp',newOperators)
             display.innerText = '';
-            console.log('last',lastOp,'current',currentOp);
             if(newOperators.length <= 1) {
-                calculation.push(firstNumber, currentOp);
-                console.log('CALCULATION',calculation)
-                calculationDisplay.innerText = calculation.join('')
+                updateCalculation(firstNumber, currentOp);
             }
             if(newOperators.length > 1 && newOperators.length <= 2) {
-                calculation.push(secondNumber, currentOp);
-                console.log('CALCULATION-TWO',calculation)
-                calculationDisplay.innerText = calculation.join('')
+                updateCalculation(secondNumber,currentOp)
             }
             if(newOperators.length === 2) {
                     console.log(operate(firstNumber,secondNumber,lastOp));
@@ -224,11 +203,7 @@ operators.forEach((e) => {
                  
                 }
             if(newOperators.length > 2) {
-                calculation.push(thirdNumber, currentOp);
-                console.log('CALCULATION-THREE',calculation)
-                calculationDisplay.innerText = calculation.join('')
-                console.log('opGreaterThan2',newOperators, lastOp);
-                console.log(operate(firstNumber,thirdNumber,lastOp));
+                updateCalculation(thirdNumber,currentOp);
                 total = operate(firstNumber, thirdNumber, lastOp);
                 display.innerText = total
                 firstNumber = total;
