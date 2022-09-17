@@ -238,28 +238,45 @@ operators.forEach((e) => {
             if(currentOp === '') {
                 currentOp = e.target.innerText;
             }
-           
+            if(currentOp!== '=') {
             currentOp = e.target.innerText;
             newOperators.push(currentOp);
             console.log('topOfOp',newOperators)
             display.innerText = '';
             console.log('last',lastOp,'current',currentOp);
+            }
+            
             if(newOperators.length <= 1) {
-                calculation.push(firstNumber, currentOp);
-                console.log('CALCULATION',calculation)
-                calculationDisplay.innerText = calculation.join('')
+                    
+                if(currentOp !== '=') {
+                    calculation.push(firstNumber, currentOp);
+                    console.log('CALCULATION',calculation)
+                    calculationDisplay.innerText = calculation.join('')
+                } else {
+                    calculation.push(firstNumber);
+                    console.log('CALCULATION',calculation)
+                    calculationDisplay.innerText = calculation.join('')
+                }
+
             }
             if(newOperators.length > 1 && newOperators.length <= 2) {
                 console.log('POOOOOO', display.innerText);
-                    if(typeof calculation[calculation.length -1] !== 'number') {
-                        console.log('DISPLAY CALCULATION', display.innerText)   
-                        calculation.push(secondNumber, currentOp);
-                        console.log('CALCULATION-TWO',calculation)
-                        calculationDisplay.innerText = calculation.join('')
+                    if(currentOp!== '=') {
+                        if(typeof calculation[calculation.length -1] !== 'number') {
+                            console.log('DISPLAY CALCULATION', display.innerText)   
+                            calculation.push(secondNumber, currentOp);
+                            console.log('CALCULATION-TWO',calculation)
+                            calculationDisplay.innerText = calculation.join('')
+                        } else {
+                            calculation.push(currentOp);
+                            calculationDisplay.innerText = calculation.join('')
+                        }
                     } else {
-                        calculation.push(currentOp);
+                        calculation.push(secondNumber);
+                        console.log('CALCULATION',calculation)
                         calculationDisplay.innerText = calculation.join('')
                     }
+
 
                 
 
@@ -277,16 +294,23 @@ operators.forEach((e) => {
                  
                 }
             if(newOperators.length > 2) {
-                calculation.push(thirdNumber, currentOp);
-                console.log('CALCULATION-THREE',calculation)
-                calculationDisplay.innerText = calculation.join('')
-                console.log('opGreaterThan2',newOperators, lastOp);
-                console.log(operate(firstNumber,thirdNumber,lastOp));
-                total = operate(firstNumber, thirdNumber, lastOp);
-                display.innerText = total
-                firstNumber = total;
-                tNumArr = [];
-                thirdNumber = 0;
+                if(currentOp!== '=') {
+                    calculation.push(thirdNumber, currentOp);
+                    console.log('CALCULATION-THREE',calculation)
+                    calculationDisplay.innerText = calculation.join('')
+                    console.log('opGreaterThan2',newOperators, lastOp);
+                    console.log(operate(firstNumber,thirdNumber,lastOp));
+                    total = operate(firstNumber, thirdNumber, lastOp);
+                    display.innerText = total
+                    firstNumber = total;
+                    tNumArr = [];
+                    thirdNumber = 0;
+                } else {
+                    calculation.push(thirdNumber);
+                    console.log('CALCULATION',calculation)
+                    calculationDisplay.innerText = calculation.join('')
+                }
+
                 
             }
                 
