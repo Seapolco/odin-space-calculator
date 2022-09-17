@@ -12,37 +12,10 @@
 // after an operation, if you press a number before an operator
 // it will add that number to the previous nArr and display on-screen
 
-
-
-
-
-
-
-
-
 let display = document.querySelector('.display');
 let title = document.querySelector('.title');
 
-
-let plus = document.querySelector('.plus');
-let minus = document.querySelector('.minus');
-let times = document.querySelector('.multiply');
-let divide = document.querySelector('.divide');
-let equal = document.querySelector('.equal');
-let period = document.querySelector('.period');
-
 let clear = document.querySelector('.clear');
-
-let one = document.querySelector('.one');
-let two = document.querySelector('.two');
-let three = document.querySelector('.three');
-let four = document.querySelector('.four');
-let five = document.querySelector('.five');
-let six = document.querySelector('.six');
-let seven = document.querySelector('.seven');
-let eight = document.querySelector('.eight');
-let nine = document.querySelector('.nine');
-let nought = document.querySelector('.nought');
 
 let buttons = document.querySelectorAll('button');
 let operators = document.querySelectorAll('.operator');
@@ -76,6 +49,11 @@ let powerOn = false;
 
 let calculation = [];
 
+let fNumArr = [];
+let sNumArr = [];
+let tNumArr = [];  
+
+
 const add = function(a,b) {
 	return a + b;
 };
@@ -90,10 +68,6 @@ const multiply = function(a,b) {
 const division = function(a,b) {
     return a / b
 };
-
-
-
-
 
 function operate(fnum,snum, op) {
     if(op === '+') {
@@ -111,43 +85,26 @@ function operate(fnum,snum, op) {
   }
 }
 
-let fNumArr = [];
-let sNumArr = [];
-let tNumArr = [];  
+
+function deleteLastCharacter(array,number) {
+    array.pop();
+    if(!array.includes('.')) {
+        number = parseInt(array.join(''));
+        display.innerText = number;   
+    } else {
+        number = parseFloat(array.join(''));
+        display.innerText = number;
+    }
+}
 
 backspace.addEventListener('click', () => {
     console.log(backspace.innerText)
     if(newOperators.length < 1) {
-        fNumArr.pop()
-        if(!fNumArr.includes('.')) {
-            firstNumber = parseInt(fNumArr.join(''));
-            display.innerText = firstNumber;   
-        } else {
-            firstNumber = parseFloat(fNumArr.join(''));
-            display.innerText = firstNumber;
-        }
-
+        deleteLastCharacter(fNumArr, firstNumber);
     } else if(newOperators.length === 1) {
-        sNumArr.pop()
-        if(!sNumArr.includes('.')) {
-            secondNumber = parseInt(sNumArr.join(''));
-            display.innerText = secondNumber;
-           
-        } else {
-            secondNumber = parseFloat(sNumArr.join(''));
-            display.innerText = secondNumber; 
-        }
+        deleteLastCharacter(sNumArr, secondNumber);
     } else {
-        tNumArr.pop()
-        if(!tNumArr.includes('.')) {
-            thirdNumber = parseInt(tNumArr.join(''));
-            display.innerText = thirdNumber;
-           
-        } else {
-            thirdNumber = parseFloat(tNumArr.join(''));
-            display.innerText = thirdNumber;
-           
-        }
+        deleteLastCharacter(tNumArr, secondNumber);
     }
 })
 
@@ -304,17 +261,17 @@ clear.addEventListener('click', () => {
     
 })
 
-equal.addEventListener('click', () => {
-    if(powerOn) {
-        if(thirdNumber === 0) {
-            console.log('equal t=0')
-            let sum = operate(firstNumber, secondNumber, currentOp)
-            display.innerText = sum;
-        } else if(thirdNumber !== 0) {
-            console.log('equal s=0')
-            let sum = operate(firstNumber, thirdNumber, currentOp)
-            display.innerText = sum;
-        }
-    }
-    
-}) 
+    // equal.addEventListener('click', () => {
+    //     if(powerOn) {
+    //         if(thirdNumber === 0) {
+    //             console.log('equal t=0')
+    //             let sum = operate(firstNumber, secondNumber, currentOp)
+    //             display.innerText = sum;
+    //         } else if(thirdNumber !== 0) {
+    //             console.log('equal s=0')
+    //             let sum = operate(firstNumber, thirdNumber, currentOp)
+    //             display.innerText = sum;
+    //         }
+    //     }
+        
+    // }) 
